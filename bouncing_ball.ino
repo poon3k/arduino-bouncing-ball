@@ -37,7 +37,7 @@
 #define COLOR_BLACK   0x0000
 #define COLOR_GREEN   0x07E0
 #define COLOR_LIGHT_BLUE 0xFE4A  // 浅蓝色 RGB(82,202,255)
-#define COLOR_BROWN    0x2920      // 棕色 RGB(139,69,19)
+#define COLOR_BROWN    0x1231      // 棕色 RGB(140,69,16)
 
 // 软件SPI初始化
 Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RST);
