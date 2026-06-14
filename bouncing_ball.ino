@@ -30,6 +30,13 @@
 
 #define BUZZER_PIN A3
 
+// ---- BGR屏幕颜色定义（红蓝通道交换）----
+#define COLOR_RED     0x001F
+#define COLOR_YELLOW  0x07FF
+#define COLOR_WHITE   0xFFFF
+#define COLOR_BLACK   0x0000
+#define COLOR_GREEN   0x07E0
+
 // 软件SPI初始化
 Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RST);
 
@@ -69,7 +76,7 @@ void setup() {
   // 初始化 0.96 寸 160x80 ST7735 屏幕
   tft.initR(INITR_MINI160x80);
   tft.setRotation(3);               // 横屏，根据实际方向可改为 1
-  tft.fillScreen(ST77XX_BLACK);
+  tft.fillScreen(COLOR_BLACK);
 
   // 画边框
   drawBorder();
@@ -86,12 +93,12 @@ void setup() {
   drawCount();
 
   // 画初始球体
-  tft.fillCircle(ballX, ballY, BALL_R, ST77XX_WHITE);
+  tft.fillCircle(ballX, ballY, BALL_R, COLOR_WHITE);
 }
 
 void loop() {
   // 1. 擦除上一帧的球（用黑色覆盖）
-  tft.fillCircle(prevX, prevY, BALL_R, ST77XX_BLACK);
+  tft.fillCircle(prevX, prevY, BALL_R, COLOR_BLACK);
 
   // 2. 更新位置
   ballX += ballVX;
@@ -131,7 +138,7 @@ void loop() {
   }
 
   // 5. 画新位置的球
-  tft.fillCircle(ballX, ballY, BALL_R, ST77XX_WHITE);
+  tft.fillCircle(ballX, ballY, BALL_R, COLOR_WHITE);
 
   // 6. 如果旧球位置靠近边框，修补可能被擦除的边框
   if (prevX - BALL_R <= OFFSET_X + BORDER_W + 1 || prevX + BALL_R >= SCREEN_W - BORDER_W - 2 ||
@@ -151,7 +158,7 @@ void drawBorder() {
   for (int i = 0; i < BORDER_W; i++) {
     tft.drawRect(OFFSET_X + i, OFFSET_Y + i,
                  SCREEN_W - OFFSET_X - 2 * i,
-                 SCREEN_H - OFFSET_Y - 2 * i, ST77XX_RED);
+                 SCREEN_H - OFFSET_Y - 2 * i, COLOR_RED);
   }
 }
 
@@ -162,9 +169,9 @@ void beep() {
 
 // 左上角显示碰撞计数
 void drawCount() {
-  tft.fillRect(COUNT_X, COUNT_Y, COUNT_W, COUNT_H, ST77XX_BLACK);
+  tft.fillRect(COUNT_X, COUNT_Y, COUNT_W, COUNT_H, COLOR_BLACK);
   tft.setCursor(COUNT_X, COUNT_Y);
-  tft.setTextColor(ST77XX_YELLOW);
+  tft.setTextColor(COLOR_YELLOW);
   tft.setTextSize(1);
   tft.print(hitCount);
 }
