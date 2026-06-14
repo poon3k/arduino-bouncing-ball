@@ -36,6 +36,7 @@
 #define COLOR_WHITE   0xFFFF
 #define COLOR_BLACK   0x0000
 #define COLOR_GREEN   0x07E0
+#define COLOR_LIGHT_BLUE 0xFE4A  // 浅蓝色 RGB(82,202,255)
 
 // 软件SPI初始化
 Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RST);
@@ -153,12 +154,12 @@ void loop() {
   delay(30);   // 约 33 FPS
 }
 
-// 画红色边框（带偏移）
+// 画浅蓝色边框（带偏移）
 void drawBorder() {
   for (int i = 0; i < BORDER_W; i++) {
     tft.drawRect(OFFSET_X + i, OFFSET_Y + i,
                  SCREEN_W - OFFSET_X - 2 * i,
-                 SCREEN_H - OFFSET_Y - 2 * i, COLOR_RED);
+                 SCREEN_H - OFFSET_Y - 2 * i, COLOR_LIGHT_BLUE);
   }
 }
 
