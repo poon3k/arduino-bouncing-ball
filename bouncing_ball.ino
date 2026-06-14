@@ -10,7 +10,7 @@
  *   蜂鸣器 -> A3
  *
  * 功能：
- *   - 屏幕四周红色边框
+ *   - 屏幕四周黄色边框
  *   - 白色球体在边框内弹跳
  *   - 碰到边框反弹并发出"哔"声
  *   - 左上角黄色字体显示碰撞计数
@@ -146,12 +146,12 @@ void loop() {
   delay(30);   // 约 33 FPS
 }
 
-// 画红色边框（带偏移）
+// 画黄色边框（带偏移）
 void drawBorder() {
   for (int i = 0; i < BORDER_W; i++) {
     tft.drawRect(OFFSET_X + i, OFFSET_Y + i,
                  SCREEN_W - OFFSET_X - 2 * i,
-                 SCREEN_H - OFFSET_Y - 2 * i, ST77XX_RED);
+                 SCREEN_H - OFFSET_Y - 2 * i, ST77XX_YELLOW);
   }
 }
 
