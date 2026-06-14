@@ -69,7 +69,6 @@ void setup() {
   // 初始化 0.96 寸 160x80 ST7735 屏幕
   tft.initR(INITR_MINI160x80);
   tft.setRotation(3);               // 横屏，根据实际方向可改为 1
-  tft.invertDisplay(true);          // 修正颜色显示（部分屏幕需要）
   tft.fillScreen(ST77XX_BLACK);
 
   // 画边框
