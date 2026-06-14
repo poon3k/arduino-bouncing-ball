@@ -48,7 +48,7 @@ Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RS
 #define BORDER_W  2       // 边框宽度（像素）
 #define OFFSET_X  1       // 边框右移1像素
 #define OFFSET_Y  4       // 边框下移4像素
-#define BALL_R    3       // 球半径（像素）
+#define BALL_R    4       // 球半径（像素）
 #define BALL_SPEED_X  2   // 水平速度
 #define BALL_SPEED_Y  1   // 垂直速度
 
